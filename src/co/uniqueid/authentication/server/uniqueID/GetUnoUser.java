@@ -1,0 +1,71 @@
+package co.uniqueid.authentication.server.uniqueID;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import co.uniqueid.authentication.server.utilities.URLUtilities;
+
+public class GetUnoUser {
+
+	// http://jsonpfy.unoidme.appspot.com/ListDataService
+	// ?kind=Entity
+	// &filterField=email&filterValue=alline.oliveira@gmail.com
+
+	private static String getUnoUserEmailUrl = "http://jsonpfy.unoidme.appspot.com/ListDataService";
+
+	public static JSONObject getByEmail(final String email) {
+
+		String parameters = "kind=Entity&filterField=email&filterValue="
+				+ email;
+
+		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
+				parameters);
+
+		return getUserJson(jsonString);
+	}
+
+	public static JSONObject getByFacebookLogin(final String facebookLogin) {
+
+		String parameters = "kind=Entity&filterField=facebookLogin&filterValue="
+				+ facebookLogin;
+
+		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
+				parameters);
+
+		return getUserJson(jsonString);
+
+	}
+
+	public static JSONObject getByGithubLogin(final String githubLogin) {
+
+		String parameters = "kind=Entity&filterField=githubLogin&filterValue="
+				+ githubLogin;
+
+		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
+				parameters);
+
+		return getUserJson(jsonString);
+	}
+
+	private static JSONObject getUserJson(String jsonString) {
+
+		JSONObject userJsonObject = null;
+
+		if (jsonString != null && !jsonString.equals("")) {
+
+			try {
+
+				JSONArray json = new JSONArray(jsonString);
+				userJsonObject = (JSONObject) json.get(0);
+
+			} catch (JSONException e) {
+				// e.printStackTrace();
+			}
+		}
+
+		return userJsonObject;
+	}
+
+}
