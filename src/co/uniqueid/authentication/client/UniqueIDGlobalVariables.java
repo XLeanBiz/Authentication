@@ -4,6 +4,6 @@ import com.google.gwt.json.client.JSONObject;
 
 public class UniqueIDGlobalVariables {
 
-	public static JSONObject unoUser = null;
+	public static JSONObject uniqueID = null;
 
 }

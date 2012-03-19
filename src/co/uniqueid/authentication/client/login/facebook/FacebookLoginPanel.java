@@ -18,7 +18,7 @@ public class FacebookLoginPanel {
 		hpFacebookLogin.setSpacing(5);
 		hpFacebookLogin.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
-		if (UniqueIDGlobalVariables.unoUser == null) {
+		if (UniqueIDGlobalVariables.uniqueID == null) {
 
 			hpFacebookLogin.clear();
 
@@ -34,7 +34,7 @@ public class FacebookLoginPanel {
 
 		hpFacebookLogin.clear();
 
-		hpFacebookLogin.add(new MyPhoto(UniqueIDGlobalVariables.unoUser));
+		hpFacebookLogin.add(new MyPhoto(UniqueIDGlobalVariables.uniqueID));
 
 		Label space3 = new Label(" | ");
 		hpFacebookLogin.add(space3);

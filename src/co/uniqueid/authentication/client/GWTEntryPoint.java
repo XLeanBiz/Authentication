@@ -3,7 +3,7 @@ package co.uniqueid.authentication.client;
 import co.uniqueid.authentication.client.login.LoginButtons;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
 import co.uniqueid.authentication.client.login.github.GithubLoginVerifyer;
-import co.uniqueid.authentication.client.uniqueid.GetUniqueID;
+import co.uniqueid.authentication.client.uniqueid.GetUniqueIDTest;
 import co.uniqueid.authentication.client.utilities.EncryptText;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -61,7 +61,7 @@ public class GWTEntryPoint implements EntryPoint {
 
 		} else {
 
-			GetUniqueID.get(unoUser);
+			GetUniqueIDTest.get(unoUser);
 		}
 	}
 }

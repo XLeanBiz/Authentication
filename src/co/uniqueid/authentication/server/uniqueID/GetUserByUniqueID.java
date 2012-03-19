@@ -2,7 +2,7 @@ package co.uniqueid.authentication.server.uniqueID;
 
 import co.uniqueid.authentication.server.utilities.URLUtilities;
 
-public class GetUnoUserByID {
+public class GetUserByUniqueID {
 
 	// http://jsonpfy.unoidme.appspot.com/GetDataService
 	// ?kind=Entity

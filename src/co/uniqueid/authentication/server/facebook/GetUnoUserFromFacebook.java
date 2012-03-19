@@ -2,11 +2,10 @@ package co.uniqueid.authentication.server.facebook;
 
 import java.util.logging.Logger;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import co.uniqueid.authentication.server.uniqueID.GetUnoUser;
+import co.uniqueid.authentication.server.uniqueID.GetUniqueID;
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
 
 public class GetUnoUserFromFacebook {
@@ -29,13 +28,14 @@ public class GetUnoUserFromFacebook {
 			facebookLogin = JSONUtilities.getString(facebookMe, "id");
 		}
 
-		JSONObject unoUserJson = GetUnoUser.getByFacebookLogin(facebookLogin);
+		JSONObject unoUserJson = JSONUtilities.getUserJson(GetUniqueID
+				.getByFacebookLogin(facebookLogin));
 
 		String email = JSONUtilities.getString(facebookMe, "email");
 
 		if (unoUserJson == null) {
 
-			unoUserJson = GetUnoUser.getByEmail(email);
+			unoUserJson = GetUniqueID.getByEmail(email);
 			if (unoUserJson != null
 					&& JSONUtilities.getString(unoUserJson, "facebookLogin") == null) {
 				try {
@@ -56,7 +56,7 @@ public class GetUnoUserFromFacebook {
 			unoUserJson = createUnoUser(unoUserID, facebookLogin, email);
 		}
 
-		//logger.log(Level.INFO, "unoUserJson=" + unoUserJson);
+		// logger.log(Level.INFO, "unoUserJson=" + unoUserJson);
 
 		SaveUnoUserFromFacebook.save(unoUserJson, facebookMe);
 

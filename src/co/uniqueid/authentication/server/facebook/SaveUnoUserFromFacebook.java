@@ -4,7 +4,7 @@ package co.uniqueid.authentication.server.facebook;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import co.uniqueid.authentication.server.uniqueID.SaveUnoUser;
+import co.uniqueid.authentication.server.uniqueID.SaveUniqueID;
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
 
 public class SaveUnoUserFromFacebook {
@@ -30,7 +30,7 @@ public class SaveUnoUserFromFacebook {
 		// JSONObject hometown = facebookMe.getJSONObject("hometown");
 		// String image = facebookMe.getString("id");
 
-		SaveUnoUser.save(unoUserJson);
+		SaveUniqueID.save(unoUserJson);
 
 	}
 

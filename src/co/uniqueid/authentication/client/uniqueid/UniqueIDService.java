@@ -8,8 +8,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("uniqueID")
 public interface UniqueIDService extends RemoteService {
-	
+
 	String getUnoUser(final String unoUserID);
-	
+
+	String getUniqueIDByFacebookID(final String facebookID);
+
 	void saveUnoUser(final String unoUserJsonString);
 }

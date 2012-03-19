@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
 import co.uniqueid.authentication.server.utilities.URLUtilities;
 
-public class SaveUnoUser {
+public class SaveUniqueID {
 
 	private static String saveUnoUserUrl = "http://jsonpfy.unoidme.appspot.com/SaveDataService";
 

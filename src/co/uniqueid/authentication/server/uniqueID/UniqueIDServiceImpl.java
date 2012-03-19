@@ -14,7 +14,12 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 
 	public String getUnoUser(final String unoUserID) {
 
-		return GetUnoUserByID.get(unoUserID);
+		return GetUserByUniqueID.get(unoUserID);
+	}
+
+	public String getUniqueIDByFacebookID(final String facebookID) {
+
+		return GetUniqueID.getByFacebookLogin(facebookID);
 	}
 
 	public void saveUnoUser(final String unoUserJsonString) {
@@ -26,7 +31,7 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 			// e.printStackTrace();
 		}
 
-		SaveUnoUser.save(json);
+		SaveUniqueID.save(json);
 	}
 
 }

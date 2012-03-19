@@ -1,6 +1,7 @@
 package co.uniqueid.authentication.client.uniqueid;
 
-import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
+import co.uniqueid.authentication.client.GWTEntryPoint;
+import co.uniqueid.authentication.client.me.MyPanel;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.core.client.GWT;
@@ -8,7 +9,7 @@ import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class GetUniqueID {
+public class GetUniqueIDTest {
 
 	public static void get(final String unoUser) {
 
@@ -22,8 +23,7 @@ public class GetUniqueID {
 
 	public static void getFromID(final String unoUserID) {
 
-		final UniqueIDServiceAsync unoIDService = GWT
-				.create(UniqueIDService.class);
+		final UniqueIDServiceAsync unoIDService = GWT.create(UniqueIDService.class);
 
 		unoIDService.getUnoUser(unoUserID, new AsyncCallback<String>() {
 
@@ -36,31 +36,10 @@ public class GetUniqueID {
 				JSONObject obj = (JSONObject) JSONParser
 						.parseStrict(jsonResults);
 
-				UniqueIDGlobalVariables.uniqueID = obj;
+				GWTEntryPoint.vpMain.clear();
+				GWTEntryPoint.vpMain.add(new MyPanel(obj));
 			}
 		});
-	}
-
-	public static void getFromFacebookID(final String facebookID) {
-
-		final UniqueIDServiceAsync unoIDService = GWT
-				.create(UniqueIDService.class);
-
-		unoIDService.getUniqueIDByFacebookID(facebookID,
-				new AsyncCallback<String>() {
-
-					public void onFailure(final Throwable caught) {
-						System.out.println(caught);
-					}
-
-					public void onSuccess(final String jsonResults) {
-
-						JSONObject obj = (JSONObject) JSONParser
-								.parseStrict(jsonResults);
-
-						UniqueIDGlobalVariables.uniqueID = obj;
-					}
-				});
 
 	}
 }

@@ -10,4 +10,7 @@ public interface UniqueIDServiceAsync {
 	void getUnoUser(String unoUserID, AsyncCallback<String> callback);
 
 	void saveUnoUser(String unoUserJsonString, AsyncCallback<Void> callback);
+
+	void getUniqueIDByFacebookID(String facebookID,
+			AsyncCallback<String> callback);
 }

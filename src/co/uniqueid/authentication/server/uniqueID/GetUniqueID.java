@@ -1,13 +1,11 @@
 package co.uniqueid.authentication.server.uniqueID;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import co.uniqueid.authentication.server.utilities.JSONUtilities;
 import co.uniqueid.authentication.server.utilities.URLUtilities;
 
-public class GetUnoUser {
+public class GetUniqueID {
 
 	// http://jsonpfy.unoidme.appspot.com/ListDataService
 	// ?kind=Entity
@@ -23,10 +21,10 @@ public class GetUnoUser {
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
 				parameters);
 
-		return getUserJson(jsonString);
+		return JSONUtilities.getUserJson(jsonString);
 	}
 
-	public static JSONObject getByFacebookLogin(final String facebookLogin) {
+	public static String getByFacebookLogin(final String facebookLogin) {
 
 		String parameters = "kind=Entity&filterField=facebookLogin&filterValue="
 				+ facebookLogin;
@@ -34,7 +32,7 @@ public class GetUnoUser {
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
 				parameters);
 
-		return getUserJson(jsonString);
+		return jsonString;
 
 	}
 
@@ -46,26 +44,9 @@ public class GetUnoUser {
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
 				parameters);
 
-		return getUserJson(jsonString);
+		return JSONUtilities.getUserJson(jsonString);
 	}
 
-	private static JSONObject getUserJson(String jsonString) {
 
-		JSONObject userJsonObject = null;
-
-		if (jsonString != null && !jsonString.equals("")) {
-
-			try {
-
-				JSONArray json = new JSONArray(jsonString);
-				userJsonObject = (JSONObject) json.get(0);
-
-			} catch (JSONException e) {
-				// e.printStackTrace();
-			}
-		}
-
-		return userJsonObject;
-	}
 
 }

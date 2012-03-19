@@ -40,7 +40,7 @@ public class FacebookLoginVerifyer {
 							JSONObject obj = (JSONObject) JSONParser
 									.parseStrict(unoUserJsonString);
 
-							UniqueIDGlobalVariables.unoUser = obj;
+							UniqueIDGlobalVariables.uniqueID = obj;
 
 							FacebookLoginPanel.setLoggedUser();
 						}
