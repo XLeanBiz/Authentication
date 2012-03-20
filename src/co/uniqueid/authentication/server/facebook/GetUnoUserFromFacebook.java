@@ -48,10 +48,8 @@ public class GetUnoUserFromFacebook {
 
 		if (unoUserJson == null) {
 
-			String unoUserID = email;
-			if (email == null) {
-				unoUserID = "FB_" + facebookLogin;
-			}
+			String unoUserID = JSONUtilities.getString(facebookMe, "first_name")
+					+ JSONUtilities.getString(facebookMe, "last_name");
 
 			unoUserJson = createUnoUser(unoUserID, facebookLogin, email);
 		}

@@ -1,6 +1,5 @@
 package co.uniqueid.authentication.server.uniqueID;
 
-
 import org.json.JSONObject;
 
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
@@ -15,62 +14,46 @@ public class SaveUniqueID {
 		String unoUserID = JSONUtilities.getString(unoUserJson, "ID");
 		String parameters = "kind=Entity&ID=" + unoUserID;
 
-		String email = JSONUtilities.getString(unoUserJson, "email");
-		if (email != null) {
-			parameters += "&fieldsKind=String&fieldsName=email&fieldsValue="
-					+ URLUtilities.encode(email);
-		}
+		parameters += addParameter(unoUserJson, "email");
 
-		String image = JSONUtilities.getString(unoUserJson, "image");
-		if (image != null) {
-			parameters += "&fieldsKind=String&fieldsName=image&fieldsValue="
-					+ URLUtilities.encode(image);
-		}
+		parameters += addParameter(unoUserJson, "image");
 
-		String facebookLogin = JSONUtilities.getString(unoUserJson,
-				"facebookLogin");
-		if (facebookLogin != null) {
-			parameters += "&fieldsKind=String&fieldsName=facebookLogin&fieldsValue="
-					+ URLUtilities.encode(facebookLogin);
-		}
+		parameters += addParameter(unoUserJson, "firstName");
 
-		String firstName = JSONUtilities.getString(unoUserJson, "firstName");
-		if (firstName != null) {
-			parameters += "&fieldsKind=String&fieldsName=firstName&fieldsValue="
-					+ URLUtilities.encode(firstName);
-		}
+		parameters += addParameter(unoUserJson, "lastName");
 
-		String lastName = JSONUtilities.getString(unoUserJson, "lastName");
-		if (lastName != null) {
-			parameters += "&fieldsKind=String&fieldsName=lastName&fieldsValue="
-					+ URLUtilities.encode(lastName);
-		}
+		parameters += addParameter(unoUserJson, "gender");
 
-		String gender = JSONUtilities.getString(unoUserJson, "gender");
-		if (gender != null) {
-			parameters += "&fieldsKind=String&fieldsName=gender&fieldsValue="
-					+ URLUtilities.encode(gender);
-		}
+		parameters += addParameter(unoUserJson, "birthday");
 
-		String birthday = JSONUtilities.getString(unoUserJson, "birthday");
-		if (birthday != null) {
-			parameters += "&fieldsKind=String&fieldsName=birthday&fieldsValue="
-					+ URLUtilities.encode(birthday);
-		}
+		parameters += addParameter(unoUserJson, "maritalStatus");
 
-		String maritalStatus = JSONUtilities.getString(unoUserJson,
-				"maritalStatus");
-		if (maritalStatus != null) {
-			parameters += "&fieldsKind=String&fieldsName=maritalStatus&fieldsValue="
-					+ URLUtilities.encode(maritalStatus);
-		}
+		parameters += addParameter(unoUserJson, "city");
 
-		String city = JSONUtilities.getString(unoUserJson, "image");
-		if (city != null) {
-			parameters += "&fieldsKind=String&fieldsName=city&fieldsValue="
-					+ URLUtilities.encode(city);
-		}
+		parameters += addParameter(unoUserJson, "facebookLogin");
+
+		parameters += addParameter(unoUserJson, "twitterID");
+
+		parameters += addParameter(unoUserJson, "linkedinID");
+
+		parameters += addParameter(unoUserJson, "aboutmeURL");
+
+		parameters += addParameter(unoUserJson, "blogURL");
+
+		parameters += addParameter(unoUserJson, "githubLogin");
 
 		URLUtilities.fetchURLPost(saveUnoUserUrl, parameters);
+	}
+
+	private static String addParameter(JSONObject json, String parameter) {
+
+		String parameterValue = JSONUtilities.getString(json, parameter);
+		if (parameterValue != null) {
+			return "&fieldsKind=String&fieldsName=" + parameter
+					+ "&fieldsValue=" + URLUtilities.encode(parameterValue);
+		} else {
+
+			return "";
+		}
 	}
 }
