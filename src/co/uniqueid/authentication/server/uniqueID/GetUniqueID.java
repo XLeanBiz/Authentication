@@ -15,7 +15,7 @@ public class GetUniqueID {
 
 	public static JSONObject getByEmail(final String email) {
 
-		String parameters = "kind=Entity&filterField=email&filterValue="
+		String parameters = "kind=UniqueID&filterField=email&filterValue="
 				+ email;
 
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
@@ -26,7 +26,7 @@ public class GetUniqueID {
 
 	public static String getByFacebookLogin(final String facebookLogin) {
 
-		String parameters = "kind=Entity&filterField=facebookLogin&filterValue="
+		String parameters = "kind=UniqueID&filterField=facebookLogin&filterValue="
 				+ facebookLogin;
 
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
@@ -38,7 +38,7 @@ public class GetUniqueID {
 
 	public static JSONObject getByGithubLogin(final String githubLogin) {
 
-		String parameters = "kind=Entity&filterField=githubLogin&filterValue="
+		String parameters = "kind=UniqueID&filterField=githubLogin&filterValue="
 				+ githubLogin;
 
 		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,

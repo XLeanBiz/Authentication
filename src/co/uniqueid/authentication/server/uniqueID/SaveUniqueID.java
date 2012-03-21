@@ -12,48 +12,28 @@ public class SaveUniqueID {
 	public static void save(JSONObject unoUserJson) {
 
 		String unoUserID = JSONUtilities.getString(unoUserJson, "ID");
-		String parameters = "kind=Entity&ID=" + unoUserID;
+		String parameters = "kind=UniqueID&ID=" + unoUserID;
+		
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "name");
+		
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "image");
 
-		parameters += addParameter(unoUserJson, "email");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "email");
 
-		parameters += addParameter(unoUserJson, "image");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "facebookLogin");
 
-		parameters += addParameter(unoUserJson, "firstName");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "twitterID");
 
-		parameters += addParameter(unoUserJson, "lastName");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "linkedinID");
 
-		parameters += addParameter(unoUserJson, "gender");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "aboutmeURL");
 
-		parameters += addParameter(unoUserJson, "birthday");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "blogURL");
 
-		parameters += addParameter(unoUserJson, "maritalStatus");
-
-		parameters += addParameter(unoUserJson, "city");
-
-		parameters += addParameter(unoUserJson, "facebookLogin");
-
-		parameters += addParameter(unoUserJson, "twitterID");
-
-		parameters += addParameter(unoUserJson, "linkedinID");
-
-		parameters += addParameter(unoUserJson, "aboutmeURL");
-
-		parameters += addParameter(unoUserJson, "blogURL");
-
-		parameters += addParameter(unoUserJson, "githubLogin");
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "githubLogin");
+		
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "googleAccount");
 
 		URLUtilities.fetchURLPost(saveUnoUserUrl, parameters);
-	}
-
-	private static String addParameter(JSONObject json, String parameter) {
-
-		String parameterValue = JSONUtilities.getString(json, parameter);
-		if (parameterValue != null) {
-			return "&fieldsKind=String&fieldsName=" + parameter
-					+ "&fieldsValue=" + URLUtilities.encode(parameterValue);
-		} else {
-
-			return "";
-		}
 	}
 }

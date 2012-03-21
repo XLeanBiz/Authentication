@@ -26,12 +26,10 @@ public class MyPhoto extends HorizontalPanel {
 			this.add(image);
 		}
 
-		String firstName = ConvertJson.getStringValue(unoUserJson, "firstName");
-		String lastName = ConvertJson.getStringValue(unoUserJson, "lastName");
 		HTML name = new HTML(
 				"<font size=2 color=blue><a href='http://unoidme.appspot.com?search="
 						+ ConvertJson.getStringValue(unoUserJson, "facebookLogin")
-						+ "' target='_blank'>" + firstName + " " + lastName
+						+ "' target='_blank'>" + ConvertJson.getStringValue(unoUserJson, "name")
 						+ "</a></font>");
 		this.add(name);
 	}

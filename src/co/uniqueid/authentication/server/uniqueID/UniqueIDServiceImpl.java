@@ -14,7 +14,7 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 
 	public String getUnoUser(final String unoUserID) {
 
-		return GetUserByUniqueID.get(unoUserID);
+		return GetEntityByUniqueID.get(unoUserID);
 	}
 
 	public String getUniqueIDByFacebookID(final String facebookID) {

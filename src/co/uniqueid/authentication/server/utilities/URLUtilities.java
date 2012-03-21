@@ -12,6 +12,8 @@ import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.json.JSONObject;
+
 public class URLUtilities {
 
 	private static Logger logger = Logger.getLogger("UnoIDMe");
@@ -90,5 +92,17 @@ public class URLUtilities {
 		}
 
 		return returnedString;
+	}
+	
+	public static String addSaveParameter(JSONObject json, String parameter) {
+
+		String parameterValue = JSONUtilities.getString(json, parameter);
+		if (parameterValue != null) {
+			return "&fieldsKind=String&fieldsName=" + parameter
+					+ "&fieldsValue=" + URLUtilities.encode(parameterValue);
+		} else {
+
+			return "";
+		}
 	}
 }

@@ -19,6 +19,8 @@ public class FacebookLoginVerifyer {
 	private static Logger logger = Logger.getLogger("UnoIDMe");
 
 	public static void authenticate(final String authenticationCode) {
+		
+		FacebookLoginPanel.hpFacebookLogin.clear();
 
 		final LoginServiceAsync loginService = GWT.create(LoginService.class);
 
@@ -34,7 +36,7 @@ public class FacebookLoginVerifyer {
 
 						public void onSuccess(final String unoUserJsonString) {
 
-							Cookies.setCookie("UnoUser",
+							Cookies.setCookie("UniqueID",
 									EncryptText.encrypt(unoUserJsonString));
 
 							JSONObject obj = (JSONObject) JSONParser

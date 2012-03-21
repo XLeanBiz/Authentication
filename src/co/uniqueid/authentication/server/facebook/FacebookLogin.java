@@ -27,7 +27,7 @@ public class FacebookLogin {
 		if (authenticationToken != null
 				&& authenticationToken.contains("access_token=")) {
 
-			unoUser = GetUnoUserFromFacebook.get(authenticationToken);
+			unoUser = GetUniqueIDFromFacebook.get(authenticationToken);
 		}
 
 		return unoUser;
