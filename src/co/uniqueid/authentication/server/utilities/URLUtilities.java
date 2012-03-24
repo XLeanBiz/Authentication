@@ -93,13 +93,35 @@ public class URLUtilities {
 
 		return returnedString;
 	}
-	
+
 	public static String addSaveParameter(JSONObject json, String parameter) {
 
 		String parameterValue = JSONUtilities.getString(json, parameter);
 		if (parameterValue != null) {
 			return "&fieldsKind=String&fieldsName=" + parameter
 					+ "&fieldsValue=" + URLUtilities.encode(parameterValue);
+		} else {
+
+			return "";
+		}
+	}
+
+	public static String addSaveParameterString(String value, String parameter) {
+
+		if (value != null) {
+			return "&fieldsKind=String&fieldsName=" + parameter
+					+ "&fieldsValue=" + URLUtilities.encode(value);
+		} else {
+
+			return "";
+		}
+	}
+
+	public static String addSaveParameterText(String value, String parameter) {
+
+		if (value != null) {
+			return "&fieldsKind=Text&fieldsName=" + parameter + "&fieldsValue="
+					+ URLUtilities.encode(value);
 		} else {
 
 			return "";

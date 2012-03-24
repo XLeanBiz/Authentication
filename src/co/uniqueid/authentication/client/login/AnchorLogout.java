@@ -1,5 +1,7 @@
 package co.uniqueid.authentication.client.login;
 
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -17,10 +19,12 @@ public class AnchorLogout extends HTML {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				
+				UniqueIDGlobalVariables.uniqueID = null;
 
 				Cookies.setCookie("githubAuthenticationToken", null);
 				Cookies.setCookie("githubUserLogin", null);
-				Cookies.setCookie("UnoUser", null);
+				Cookies.setCookie("UniqueID", null);
 
 				Window.Location.assign(GWT.getHostPageBaseURL());
 			}

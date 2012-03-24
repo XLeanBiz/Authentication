@@ -22,7 +22,7 @@ public class MyPhoto extends HorizontalPanel {
 							+ ConvertJson.getStringValue(unoUserJson,
 									"facebookLogin")
 							+ "' target='_blank'><img src='" + imageURL
-							+ "' border=0 width='25px' height='25px'></a>");
+							+ "' border=0 width='35px' height='35px'></a>");
 			this.add(image);
 		}
 
