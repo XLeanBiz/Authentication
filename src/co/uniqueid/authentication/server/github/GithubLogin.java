@@ -1,6 +1,5 @@
 package co.uniqueid.authentication.server.github;
 
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,8 +54,8 @@ public class GithubLogin {
 				e1.printStackTrace();
 			}
 
-			JSONObject unoUserJson = GetUniqueID
-					.getByGithubLogin(githubUserLogin);
+			JSONObject unoUserJson = JSONUtilities.getUserJson(GetUniqueID
+					.getByField("githubUserLogin", githubUserLogin));
 
 			String unoUserID = JSONUtilities.getString(unoUserJson, "ID");
 

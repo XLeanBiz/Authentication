@@ -46,7 +46,7 @@ public class GetUniqueID {
 		final UniqueIDServiceAsync unoIDService = GWT
 				.create(UniqueIDService.class);
 
-		unoIDService.getUniqueIDByFacebookID(facebookID,
+		unoIDService.getUniqueIDByField("facebookLogin", facebookID,
 				new AsyncCallback<String>() {
 
 					public void onFailure(final Throwable caught) {

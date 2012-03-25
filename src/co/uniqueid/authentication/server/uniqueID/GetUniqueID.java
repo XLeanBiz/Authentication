@@ -1,8 +1,5 @@
 package co.uniqueid.authentication.server.uniqueID;
 
-import org.json.JSONObject;
-
-import co.uniqueid.authentication.server.utilities.JSONUtilities;
 import co.uniqueid.authentication.server.utilities.URLUtilities;
 
 public class GetUniqueID {
@@ -11,42 +8,17 @@ public class GetUniqueID {
 	// ?kind=Entity
 	// &filterField=email&filterValue=alline.oliveira@gmail.com
 
-	private static String getUnoUserEmailUrl = "http://jsonpfy.unoidme.appspot.com/ListDataService";
+	private static String getUniqueIDUrl = "http://jsonpfy.unoidme.appspot.com/ListDataService";
 
-	public static JSONObject getByEmail(final String email) {
+	public static String getByField(final String fieldName,
+			final String fieldValue) {
 
-		String parameters = "kind=UniqueID&filterField=email&filterValue="
-				+ email;
+		String parameters = "kind=UniqueID&filterField=" + fieldName
+				+ "&filterValue=" + fieldValue;
 
-		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
-				parameters);
-
-		return JSONUtilities.getUserJson(jsonString);
-	}
-
-	public static String getByFacebookLogin(final String facebookLogin) {
-
-		String parameters = "kind=UniqueID&filterField=facebookLogin&filterValue="
-				+ facebookLogin;
-
-		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
+		final String jsonString = URLUtilities.fetchURLPost(getUniqueIDUrl,
 				parameters);
 
 		return jsonString;
-
 	}
-
-	public static JSONObject getByGithubLogin(final String githubLogin) {
-
-		String parameters = "kind=UniqueID&filterField=githubLogin&filterValue="
-				+ githubLogin;
-
-		final String jsonString = URLUtilities.fetchURLPost(getUnoUserEmailUrl,
-				parameters);
-
-		return JSONUtilities.getUserJson(jsonString);
-	}
-
-
-
 }

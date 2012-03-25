@@ -1,5 +1,8 @@
 package co.uniqueid.authentication.server.uniqueID;
 
+import java.util.Date;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
@@ -9,18 +12,20 @@ public class SaveUniqueID {
 
 	private static String saveUnoUserUrl = "http://jsonpfy.unoidme.appspot.com/SaveDataService";
 
-	public static void save(JSONObject unoUserJson) {
+	public static String save(JSONObject unoUserJson) {
 
-		String unoUserID = JSONUtilities.getString(unoUserJson, "ID");
-		String parameters = "kind=UniqueID&ID=" + unoUserID;
-		
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "name");
-		
+		String parameters = "kind=UniqueID";
+
+		parameters += ("&ID=" + getID(unoUserJson));
+
+		parameters += URLUtilities.addSaveParameter(unoUserJson, "entityName");
+
 		parameters += URLUtilities.addSaveParameter(unoUserJson, "image");
 
 		parameters += URLUtilities.addSaveParameter(unoUserJson, "email");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "facebookLogin");
+		parameters += URLUtilities.addSaveParameter(unoUserJson,
+				"facebookLogin");
 
 		parameters += URLUtilities.addSaveParameter(unoUserJson, "twitterID");
 
@@ -31,9 +36,33 @@ public class SaveUniqueID {
 		parameters += URLUtilities.addSaveParameter(unoUserJson, "blogURL");
 
 		parameters += URLUtilities.addSaveParameter(unoUserJson, "githubLogin");
-		
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "googleAccount");
+
+		parameters += URLUtilities.addSaveParameter(unoUserJson,
+				"googleAccount");
 
 		URLUtilities.fetchURLPost(saveUnoUserUrl, parameters);
+
+		return unoUserJson.toString();
+	}
+
+	private static String getID(JSONObject unoUserJson) {
+
+		String uniqueID = JSONUtilities.getString(unoUserJson, "ID");
+
+		if (uniqueID == null) {
+
+			uniqueID = JSONUtilities.getString(unoUserJson, "entityName") + "_"
+					+ (new Date().getTime());
+
+			try {
+				unoUserJson.put("ID", uniqueID);
+
+			} catch (JSONException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return uniqueID;
 	}
 }

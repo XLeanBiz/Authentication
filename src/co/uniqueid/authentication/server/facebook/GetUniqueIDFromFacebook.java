@@ -30,13 +30,14 @@ public class GetUniqueIDFromFacebook {
 		}
 
 		JSONObject unoUserJson = JSONUtilities.getUserJson(GetUniqueID
-				.getByFacebookLogin(facebookLogin));
+				.getByField("facebookLogin", facebookLogin));
 
 		String email = JSONUtilities.getString(facebookMe, "email");
 
 		if (unoUserJson == null) {
 
-			unoUserJson = GetUniqueID.getByEmail(email);
+			unoUserJson = JSONUtilities.getUserJson(GetUniqueID.getByField(
+					"email", email));
 			if (unoUserJson != null
 					&& JSONUtilities.getString(unoUserJson, "facebookLogin") == null) {
 				try {
@@ -74,7 +75,7 @@ public class GetUniqueIDFromFacebook {
 
 			jsonObject.put("ID", unoUserID);
 			jsonObject.put("facebookLogin", facebookLogin);
-			//jsonObject.put("email", email);
+			// jsonObject.put("email", email);
 
 		} catch (JSONException e) {
 			// e.printStackTrace();

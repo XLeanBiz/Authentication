@@ -11,7 +11,7 @@ public interface UniqueIDService extends RemoteService {
 
 	String getUnoUser(final String unoUserID);
 
-	String getUniqueIDByFacebookID(final String facebookID);
+	String getUniqueIDByField(final String fieldName, final String fieldValue);
 
-	void saveUnoUser(final String unoUserJsonString);
+	String saveUnoUser(final String unoUserJsonString);
 }

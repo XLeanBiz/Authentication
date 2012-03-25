@@ -8,15 +8,14 @@ import co.uniqueid.authentication.server.utilities.JSONUtilities;
 
 public class SaveUniqueIDFromFacebook {
 
-	public static void save(final JSONObject unoUserJson,
-			final JSONObject facebookMe) {
+	public static void save(JSONObject unoUserJson, final JSONObject facebookMe) {
 
 		updateImage(unoUserJson);
 
 		updateValue(unoUserJson, facebookMe, "facebook_email", "email");
-		
+
 		updateValue(unoUserJson, facebookMe, "facebook_id", "id");
-		
+
 		updateFacebookValue(unoUserJson, facebookMe, "username");
 
 		updateFacebookValue(unoUserJson, facebookMe, "first_name");
@@ -32,11 +31,11 @@ public class SaveUniqueIDFromFacebook {
 		// JSONObject hometown = facebookMe.getJSONObject("hometown");
 		// String image = facebookMe.getString("id");
 
-		SaveUniqueID.save(unoUserJson);
-
-		updateName(unoUserJson);
-
 		SaveFacebookInfo.save(unoUserJson);
+
+		unoUserJson = updateName(unoUserJson);
+
+		SaveUniqueID.save(unoUserJson);
 
 	}
 
@@ -65,9 +64,9 @@ public class SaveUniqueIDFromFacebook {
 		}
 	}
 
-	private static void updateName(final JSONObject unoUserJson) {
+	private static JSONObject updateName(JSONObject unoUserJson) {
 
-		String name = JSONUtilities.getString(unoUserJson, "name");
+		String name = JSONUtilities.getString(unoUserJson, "entityName");
 
 		if (name == null) {
 
@@ -77,11 +76,13 @@ public class SaveUniqueIDFromFacebook {
 			name = first + " " + last;
 
 			try {
-				unoUserJson.put("name", name);
+				unoUserJson.put("entityName", name);
 			} catch (JSONException e) {
 				// e.printStackTrace();
 			}
 		}
+
+		return unoUserJson;
 	}
 
 	private static void updateImage(final JSONObject unoUserJson) {

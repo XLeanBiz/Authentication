@@ -17,12 +17,13 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 		return GetEntityByUniqueID.get(unoUserID);
 	}
 
-	public String getUniqueIDByFacebookID(final String facebookID) {
+	public String getUniqueIDByField(final String fieldName,
+			final String fieldValue) {
 
-		return GetUniqueID.getByFacebookLogin(facebookID);
+		return GetUniqueID.getByField(fieldName, fieldValue);
 	}
 
-	public void saveUnoUser(final String unoUserJsonString) {
+	public String saveUnoUser(String unoUserJsonString) {
 
 		JSONObject json = new JSONObject();
 		try {
@@ -31,7 +32,9 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 			// e.printStackTrace();
 		}
 
-		SaveUniqueID.save(json);
+		unoUserJsonString = SaveUniqueID.save(json);
+
+		return unoUserJsonString;
 	}
 
 }
