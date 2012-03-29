@@ -18,15 +18,16 @@ public class FacebookLoginVerifyer {
 
 	private static Logger logger = Logger.getLogger("UnoIDMe");
 
-	public static void authenticate(final String authenticationCode) {
-		
+	public static void authenticate(final String AppID,
+			final String authenticationCode, final String redirect_URL) {
+
 		FacebookLoginPanel.hpFacebookLogin.clear();
 
 		final LoginServiceAsync loginService = GWT.create(LoginService.class);
 
 		if (!(authenticationCode == null || "".equals(authenticationCode))) {
 
-			loginService.facebookLogin(authenticationCode,
+			loginService.facebookLogin(AppID, authenticationCode, redirect_URL,
 					new AsyncCallback<String>() {
 
 						public void onFailure(final Throwable caught) {

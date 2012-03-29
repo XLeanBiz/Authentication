@@ -18,7 +18,7 @@ public class MyPhoto extends HorizontalPanel {
 		if (imageURL != null) {
 
 			HTML image = new HTML(
-					"<a href='http://unoidme.appspot.com?search="
+					"<a href='http://uniqueid.co?search="
 							+ ConvertJson.getStringValue(unoUserJson,
 									"facebookLogin")
 							+ "' target='_blank'><img src='" + imageURL
@@ -27,7 +27,7 @@ public class MyPhoto extends HorizontalPanel {
 		}
 
 		HTML name = new HTML(
-				"<font size=2 color=blue><a href='http://unoidme.appspot.com?search="
+				"<font size=2 color=blue><a href='http://uniqueid.co?search="
 						+ ConvertJson.getStringValue(unoUserJson, "facebookLogin")
 						+ "' target='_blank'>" + ConvertJson.getStringValue(unoUserJson, "entityName")
 						+ "</a></font>");

@@ -10,37 +10,33 @@ import co.uniqueid.authentication.server.utilities.URLUtilities;
 
 public class SaveUniqueID {
 
-	private static String saveUnoUserUrl = "http://jsonpfy.unoidme.appspot.com/SaveDataService";
+	private static String saveUniqueIDUrl = "http://api.unoidme.appspot.com/SaveUniqueIDService";
 
 	public static String save(JSONObject unoUserJson) {
 
-		String parameters = "kind=UniqueID";
+		String parameters = "UniqueID=" + getID(unoUserJson);
 
-		parameters += ("&ID=" + getID(unoUserJson));
+		parameters += addSaveParameter(unoUserJson, "entityName");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "entityName");
+		parameters += addSaveParameter(unoUserJson, "image");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "image");
+		parameters += addSaveParameter(unoUserJson, "email");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "email");
+	//	parameters += addSaveParameter(unoUserJson, "facebookLogin");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson,
-				"facebookLogin");
+		parameters += addSaveParameter(unoUserJson, "twitterID");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "twitterID");
+		parameters += addSaveParameter(unoUserJson, "linkedinID");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "linkedinID");
+		parameters += addSaveParameter(unoUserJson, "aboutmeURL");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "aboutmeURL");
+		parameters += addSaveParameter(unoUserJson, "blogURL");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "blogURL");
+		parameters += addSaveParameter(unoUserJson, "githubLogin");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "githubLogin");
+		parameters += addSaveParameter(unoUserJson, "googleAccount");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson,
-				"googleAccount");
-
-		URLUtilities.fetchURLPost(saveUnoUserUrl, parameters);
+		URLUtilities.fetchURLPost(saveUniqueIDUrl, parameters);
 
 		return unoUserJson.toString();
 	}
@@ -51,8 +47,8 @@ public class SaveUniqueID {
 
 		if (uniqueID == null) {
 
-			uniqueID = JSONUtilities.getString(unoUserJson, "entityName") + "_"
-					+ (new Date().getTime());
+			uniqueID = URLUtilities.compactName(JSONUtilities.getString(
+					unoUserJson, "entityName")) + "_" + (new Date().getTime());
 
 			try {
 				unoUserJson.put("ID", uniqueID);
@@ -64,5 +60,16 @@ public class SaveUniqueID {
 		}
 
 		return uniqueID;
+	}
+
+	private static String addSaveParameter(JSONObject json, String parameter) {
+
+		String parameterValue = JSONUtilities.getString(json, parameter);
+		if (parameterValue != null) {
+			return "&" + parameter + "=" + URLUtilities.encode(parameterValue);
+		} else {
+
+			return "";
+		}
 	}
 }

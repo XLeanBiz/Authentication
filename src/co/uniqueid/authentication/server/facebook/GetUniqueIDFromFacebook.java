@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import co.uniqueid.authentication.server.uniqueID.GetUniqueID;
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
+import co.uniqueid.authentication.server.utilities.URLUtilities;
 
 public class GetUniqueIDFromFacebook {
 
@@ -22,7 +23,7 @@ public class GetUniqueIDFromFacebook {
 		return unoUser;
 	}
 
-	private static String saveUniqueID(JSONObject facebookMe) {
+	public static String saveUniqueID(JSONObject facebookMe) {
 
 		String facebookLogin = JSONUtilities.getString(facebookMe, "username");
 		if (facebookLogin == null) {
@@ -55,6 +56,11 @@ public class GetUniqueIDFromFacebook {
 					+ JSONUtilities.getString(facebookMe, "last_name")
 					+ "_"
 					+ (new Date()).getTime();
+			
+			/*String unoUserID = URLUtilities.compactName(JSONUtilities
+					.getString(facebookMe, "name"))
+					+ "_"
+					+ (new Date()).getTime();*/
 
 			unoUserJson = createUniqueID(unoUserID, facebookLogin, email);
 		}

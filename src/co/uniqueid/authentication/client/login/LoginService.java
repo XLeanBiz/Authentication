@@ -11,5 +11,6 @@ public interface LoginService extends RemoteService {
 	
 	public String githubLogin(String authenticationCode);
 	
-	public String facebookLogin(String authenticationCode);
+	public String facebookLogin(final String AppID, final String authCode,
+			final String redirect_URL);
 }

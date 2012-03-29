@@ -1,6 +1,6 @@
 package co.uniqueid.authentication.client.login;
 
-
+import co.uniqueid.authentication.client.login.facebook.FacebookAppsProperties;
 import co.uniqueid.authentication.client.login.facebook.LoginWithFacebookButton;
 import co.uniqueid.authentication.client.login.github.LoginGithubButton;
 
@@ -12,7 +12,9 @@ public class LoginButtons extends VerticalPanel {
 
 		this.setSpacing(20);
 
-		this.add(new LoginWithFacebookButton());
+		this.add(new LoginWithFacebookButton(
+				FacebookAppsProperties.testFacebookID,
+				FacebookAppsProperties.test_REDIRECT_URL));
 
 		this.add(new LoginGithubButton());
 	}

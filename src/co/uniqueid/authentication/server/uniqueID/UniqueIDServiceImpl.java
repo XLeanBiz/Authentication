@@ -12,9 +12,9 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 
 	private static final long serialVersionUID = -8355612980477933670L;
 
-	public String getUnoUser(final String unoUserID) {
+	public String getUniqueID(final String uniqueID) {
 
-		return GetEntityByUniqueID.get(unoUserID);
+		return GetUniqueID.getByID(uniqueID);
 	}
 
 	public String getUniqueIDByField(final String fieldName,
@@ -23,7 +23,7 @@ public class UniqueIDServiceImpl extends RemoteServiceServlet implements
 		return GetUniqueID.getByField(fieldName, fieldValue);
 	}
 
-	public String saveUnoUser(String unoUserJsonString) {
+	public String saveUniqueID(String unoUserJsonString) {
 
 		JSONObject json = new JSONObject();
 		try {

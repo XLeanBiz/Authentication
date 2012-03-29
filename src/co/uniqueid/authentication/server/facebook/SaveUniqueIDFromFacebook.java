@@ -34,7 +34,7 @@ public class SaveUniqueIDFromFacebook {
 		SaveFacebookInfo.save(unoUserJson);
 
 		unoUserJson = updateName(unoUserJson);
-
+		
 		SaveUniqueID.save(unoUserJson);
 
 	}

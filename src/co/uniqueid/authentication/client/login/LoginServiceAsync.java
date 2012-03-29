@@ -9,5 +9,6 @@ public interface LoginServiceAsync {
 
 	void githubLogin(String authenticationCode, AsyncCallback<String> callback);
 
-	void facebookLogin(String authenticationCode, AsyncCallback<String> callback);
+	void facebookLogin(String AppID, String authCode, String redirect_URL,
+			AsyncCallback<String> callback);
 }

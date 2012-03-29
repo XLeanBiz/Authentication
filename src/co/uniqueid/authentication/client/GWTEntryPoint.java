@@ -1,6 +1,7 @@
 package co.uniqueid.authentication.client;
 
 import co.uniqueid.authentication.client.login.LoginButtons;
+import co.uniqueid.authentication.client.login.facebook.FacebookAppsProperties;
 import co.uniqueid.authentication.client.login.facebook.FacebookLoginVerifyer;
 import co.uniqueid.authentication.client.login.github.GithubLoginVerifyer;
 import co.uniqueid.authentication.client.uniqueid.GetUniqueIDTest;
@@ -55,7 +56,10 @@ public class GWTEntryPoint implements EntryPoint {
 
 				} else {
 
-					FacebookLoginVerifyer.authenticate(authenticationCode);
+					FacebookLoginVerifyer.authenticate(
+							FacebookAppsProperties.testFacebookID,
+							authenticationCode,
+							FacebookAppsProperties.test_REDIRECT_URL);
 				}
 			}
 

@@ -25,7 +25,7 @@ public class GetUniqueID {
 		final UniqueIDServiceAsync unoIDService = GWT
 				.create(UniqueIDService.class);
 
-		unoIDService.getUnoUser(unoUserID, new AsyncCallback<String>() {
+		unoIDService.getUniqueID(unoUserID, new AsyncCallback<String>() {
 
 			public void onFailure(final Throwable caught) {
 				System.out.println(caught);

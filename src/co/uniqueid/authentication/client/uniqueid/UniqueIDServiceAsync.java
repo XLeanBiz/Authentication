@@ -7,9 +7,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface UniqueIDServiceAsync {
 
-	void getUnoUser(String unoUserID, AsyncCallback<String> callback);
+	void getUniqueID(String unoUserID, AsyncCallback<String> callback);
 
-	void saveUnoUser(String unoUserJsonString, AsyncCallback<String> callback);
+	void saveUniqueID(String unoUserJsonString, AsyncCallback<String> callback);
 
 	void getUniqueIDByField(String fieldName, String fieldValue,
 			AsyncCallback<String> callback);
