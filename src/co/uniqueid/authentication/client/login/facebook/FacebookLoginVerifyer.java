@@ -12,6 +12,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Window.Location;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class FacebookLoginVerifyer {
@@ -19,7 +20,8 @@ public class FacebookLoginVerifyer {
 	private static Logger logger = Logger.getLogger("UnoIDMe");
 
 	public static void authenticate(final String AppID,
-			final String authenticationCode, final String redirect_URL) {
+			final String authenticationCode, final String redirect_URL,
+			final String newLocation) {
 
 		FacebookLoginPanel.hpFacebookLogin.clear();
 
@@ -46,6 +48,11 @@ public class FacebookLoginVerifyer {
 							UniqueIDGlobalVariables.uniqueID = obj;
 
 							FacebookLoginPanel.setLoggedUser();
+
+							if (newLocation != null) {
+
+								Location.assign(newLocation);
+							}
 						}
 					});
 

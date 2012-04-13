@@ -59,7 +59,7 @@ public class GWTEntryPoint implements EntryPoint {
 					FacebookLoginVerifyer.authenticate(
 							FacebookAppsProperties.testFacebookID,
 							authenticationCode,
-							FacebookAppsProperties.test_REDIRECT_URL);
+							FacebookAppsProperties.test_REDIRECT_URL, null);
 				}
 			}
 
