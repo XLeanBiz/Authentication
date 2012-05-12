@@ -4,7 +4,7 @@ import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.login.AnchorLogout;
 import co.uniqueid.authentication.client.me.MyPhoto;
 
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -23,6 +23,8 @@ public class FacebookLoginPanel {
 				.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
 
 		if (UniqueIDGlobalVariables.uniqueID == null) {
+
+			Cookies.setCookie("UniqueID", null);
 
 			hpFacebookLogin.clear();
 

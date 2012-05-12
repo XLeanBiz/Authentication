@@ -16,13 +16,15 @@ public class SaveUniqueID {
 
 		String parameters = "UniqueID=" + getID(unoUserJson);
 
+		parameters += "override=false";
+
 		parameters += addSaveParameter(unoUserJson, "entityName");
 
 		parameters += addSaveParameter(unoUserJson, "image");
 
 		parameters += addSaveParameter(unoUserJson, "email");
 
-	//	parameters += addSaveParameter(unoUserJson, "facebookLogin");
+		// parameters += addSaveParameter(unoUserJson, "facebookLogin");
 
 		parameters += addSaveParameter(unoUserJson, "twitterID");
 

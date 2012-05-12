@@ -10,8 +10,6 @@ public class SaveUniqueIDFromFacebook {
 
 	public static void save(JSONObject unoUserJson, final JSONObject facebookMe) {
 
-		updateImage(unoUserJson);
-
 		updateValue(unoUserJson, facebookMe, "facebook_email", "email");
 
 		updateValue(unoUserJson, facebookMe, "facebook_id", "id");
@@ -34,6 +32,8 @@ public class SaveUniqueIDFromFacebook {
 		SaveFacebookInfo.save(unoUserJson);
 
 		unoUserJson = updateName(unoUserJson);
+		
+		unoUserJson = updateImage(unoUserJson);
 		
 		SaveUniqueID.save(unoUserJson);
 
@@ -85,7 +85,7 @@ public class SaveUniqueIDFromFacebook {
 		return unoUserJson;
 	}
 
-	private static void updateImage(final JSONObject unoUserJson) {
+	private static JSONObject updateImage(final JSONObject unoUserJson) {
 
 		String image = JSONUtilities.getString(unoUserJson, "image");
 
@@ -102,5 +102,7 @@ public class SaveUniqueIDFromFacebook {
 				// e.printStackTrace();
 			}
 		}
+		
+		return unoUserJson;
 	}
 }

@@ -16,12 +16,6 @@ public class GetUniqueIDFromFacebook {
 		JSONObject facebookMe = FacebookAPI.me(authenticationToken);
 
 		JSONObject unoUser = saveUniqueID(facebookMe);
-		
-		try {
-			unoUser.put("authenticationToken", authenticationToken);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
 
 		return unoUser.toString();
 	}
