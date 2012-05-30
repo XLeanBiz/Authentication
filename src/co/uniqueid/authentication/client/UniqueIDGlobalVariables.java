@@ -6,4 +6,5 @@ public class UniqueIDGlobalVariables {
 
 	public static JSONObject uniqueID = null;
 
+	public static JSONObject companyUniqueID = null;
 }

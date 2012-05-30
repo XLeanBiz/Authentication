@@ -4,8 +4,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
+import co.uniqueid.authentication.client.companies.GetFirstCompany;
+import co.uniqueid.authentication.client.companies.ListCompanies;
 import co.uniqueid.authentication.client.login.LoginService;
 import co.uniqueid.authentication.client.login.LoginServiceAsync;
+import co.uniqueid.authentication.client.utilities.ConvertJson;
 import co.uniqueid.authentication.client.utilities.EncryptText;
 
 import com.google.gwt.core.client.GWT;
@@ -21,7 +24,7 @@ public class FacebookLoginVerifyer {
 
 	public static void authenticate(final String AppID,
 			final String authenticationCode, final String redirect_URL,
-			final String newLocation) {
+			final String newLocation, final boolean initCompanies) {
 
 		FacebookLoginPanel.hpFacebookLogin.clear();
 
@@ -37,21 +40,37 @@ public class FacebookLoginVerifyer {
 							logger.log(Level.INFO, "caught=" + caught);
 						}
 
-						public void onSuccess(final String unoUserJsonString) {
+						public void onSuccess(String uniqueIDJsonString) {
 
-							Cookies.setCookie("UniqueID",
-									EncryptText.encrypt(unoUserJsonString));
+							// uniqueIDJsonString = UserTest.get();
+							// logger.log(Level.INFO, "uniqueIDJsonString="
+							// + uniqueIDJsonString);
 
-							JSONObject obj = (JSONObject) JSONParser
-									.parseStrict(unoUserJsonString);
+							if (uniqueIDJsonString != null) {
 
-							UniqueIDGlobalVariables.uniqueID = obj;
+								JSONObject obj = (JSONObject) JSONParser
+										.parseStrict(uniqueIDJsonString);
 
-							FacebookLoginPanel.setLoggedUser();
+								String ID = ConvertJson.getStringValue(obj,
+										"ID");
 
-							if (newLocation != null) {
+								Cookies.setCookie("UniqueID",
+										EncryptText.encrypt(ID));
 
-								Location.assign(newLocation);
+								UniqueIDGlobalVariables.uniqueID = obj;
+
+								FacebookLoginPanel.setLoggedUser();
+
+								if (newLocation != null) {
+
+									Location.assign(newLocation);
+								}
+
+								if (initCompanies) {
+
+									ListCompanies.list();
+									GetFirstCompany.get(null);
+								}
 							}
 						}
 					});

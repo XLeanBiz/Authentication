@@ -36,7 +36,7 @@ public class GWTEntryPoint implements EntryPoint {
 
 		if (unoUser == null || unoUser.equals("null")) {
 
-			final String authenticationCode = Location.getParameter("code");
+			String authenticationCode = Location.getParameter("code");
 
 			final String error = Location.getParameter("error_reason");
 
@@ -59,7 +59,8 @@ public class GWTEntryPoint implements EntryPoint {
 					FacebookLoginVerifyer.authenticate(
 							FacebookAppsProperties.testFacebookID,
 							authenticationCode,
-							FacebookAppsProperties.test_REDIRECT_URL, null);
+							FacebookAppsProperties.test_REDIRECT_URL, null,
+							false);
 				}
 			}
 

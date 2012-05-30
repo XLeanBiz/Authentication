@@ -16,7 +16,7 @@ public class SaveUniqueID {
 
 		String parameters = "UniqueID=" + getID(unoUserJson);
 
-		parameters += "override=false";
+		parameters += "&override=false";
 
 		parameters += addSaveParameter(unoUserJson, "entityName");
 

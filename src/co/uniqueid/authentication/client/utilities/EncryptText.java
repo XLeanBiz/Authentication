@@ -20,10 +20,13 @@ public class EncryptText {
 
 		} catch (DataLengthException e1) {
 			e1.printStackTrace();
+			// Window.alert(e1.getMessage());
 		} catch (IllegalStateException e1) {
 			e1.printStackTrace();
+			// Window.alert(e1.getMessage());
 		} catch (InvalidCipherTextException e1) {
 			e1.printStackTrace();
+			// Window.alert(e1.getMessage());
 		}
 
 		return encryptedText;
@@ -33,7 +36,7 @@ public class EncryptText {
 
 		String decryptedtext = null;
 
-		if (encryptedText != null) {
+		if (encryptedText != null && !("null".equals(encryptedText))) {
 
 			TripleDesCipher cipher = new TripleDesCipher();
 

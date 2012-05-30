@@ -4,9 +4,9 @@ import co.uniqueid.authentication.server.utilities.URLUtilities;
 
 public class GetUniqueID {
 
-	private static String getUniqueIDUrl = "http://api.unoidme.appspot.com/GetUniqueIDService";
+	private static String getUniqueIDUrl = "https://api.unoidme.appspot.com/GetUniqueIDService";
 
-	private static String searchUniqueIDUrl = "http://api.unoidme.appspot.com/SearchUniqueIDService";
+	private static String searchUniqueIDUrl = "https://api.unoidme.appspot.com/SearchUniqueIDService";
 
 	public static String getByID(final String uniqueID) {
 
@@ -18,8 +18,11 @@ public class GetUniqueID {
 		return jsonString;
 	}
 
-	public static String getByField(final String fieldName, final String fieldValue) {
+	public static String getByField( String fieldName,  String fieldValue) {
 
+		//fieldName="facebookLogin";
+		//fieldValue="alline.oliveira";
+		
 		String parameters = "fieldName=" + fieldName + "&fieldValue="
 				+ fieldValue;
 
