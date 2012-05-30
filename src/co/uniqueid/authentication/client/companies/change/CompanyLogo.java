@@ -27,7 +27,7 @@ public class CompanyLogo extends HorizontalPanel {
 
 				UniqueIDGlobalVariables.companyUniqueID = companyJson;
 				String ID = ConvertJson.getStringValue(companyJson, "ID");
-				GetCompany.get(ID, redirect_URL + "?company=" + ID);
+				GetCompany.get(ID, redirect_URL + "?company=" + ID, true);
 
 				popup.hide();
 			}

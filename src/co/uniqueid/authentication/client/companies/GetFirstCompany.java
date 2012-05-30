@@ -1,12 +1,14 @@
 package co.uniqueid.authentication.client.companies;
 
+import co.uniqueid.authentication.client.UniqueIDGlobalVariables;
 import co.uniqueid.authentication.client.utilities.ConvertJson;
 
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONString;
 
 public class GetFirstCompany {
 
-	public static void get(String companyReferenceID) {
+	public static void get(String companyReferenceID, final String redirect_URL) {
 
 		if (companyReferenceID == null) {
 
@@ -30,7 +32,12 @@ public class GetFirstCompany {
 
 		if (companyReferenceID != null) {
 
-			GetCompany.get(companyReferenceID, null);
+			JSONObject json = new JSONObject();
+			json.put("ID", new JSONString(companyReferenceID));
+
+			UniqueIDGlobalVariables.companyUniqueID = json;
+
+			GetCompany.get(companyReferenceID, redirect_URL, false);
 		}
 	}
 }

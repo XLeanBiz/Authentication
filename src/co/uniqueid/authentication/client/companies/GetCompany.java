@@ -12,7 +12,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class GetCompany {
 
-	public static void get(final String uniqueID, final String redirect_URL) {
+	public static void get(final String uniqueID, final String redirect_URL,
+			final boolean toRedirect) {
 
 		final UniqueIDServiceAsync uniqueIDService = GWT
 				.create(UniqueIDService.class);
@@ -38,7 +39,7 @@ public class GetCompany {
 					}
 				}
 
-				if (redirect_URL != null) {
+				if (toRedirect) {
 
 					Location.assign(redirect_URL);
 				}

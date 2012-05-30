@@ -69,7 +69,7 @@ public class FacebookLoginVerifyer {
 								if (initCompanies) {
 
 									ListCompanies.list();
-									GetFirstCompany.get(null);
+									GetFirstCompany.get(null, redirect_URL);
 								}
 							}
 						}

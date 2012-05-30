@@ -34,7 +34,7 @@ public class InitializeFacebookLogin {
 				public void onSuccess(final String jsonResults) {
 
 					if (jsonResults != null) {
-						
+
 						JSONObject obj = (JSONObject) JSONParser
 								.parseStrict(jsonResults);
 
@@ -47,7 +47,7 @@ public class InitializeFacebookLogin {
 							ListCompanies.list();
 						}
 
-						GetFirstCompany.get(companyID);
+						GetFirstCompany.get(companyID, redirectURL);
 					}
 				}
 			});
