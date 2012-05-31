@@ -28,16 +28,20 @@ public class GetFirstCompany {
 				companyReferenceID = ConvertJson.getStringValue(companyJson,
 						"ID");
 			}
-		}
 
-		if (companyReferenceID != null) {
+			if (companyReferenceID != null) {
+
+				GetCompany.get(companyReferenceID, redirect_URL, true);
+			}
+			
+		} else {
 
 			JSONObject json = new JSONObject();
-			json.put("ID", new JSONString(companyReferenceID));
+				json.put("ID", new JSONString(companyReferenceID));
 
-			UniqueIDGlobalVariables.companyUniqueID = json;
+				UniqueIDGlobalVariables.companyUniqueID = json;
 
-			GetCompany.get(companyReferenceID, redirect_URL, false);
+				GetCompany.get(companyReferenceID, redirect_URL, false);
 		}
 	}
 }
