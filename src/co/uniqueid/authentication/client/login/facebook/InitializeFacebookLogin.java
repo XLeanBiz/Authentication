@@ -14,7 +14,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public class InitializeFacebookLogin {
 
 	public InitializeFacebookLogin(final String uniqueID, final String appID,
-			final String redirectURL, final String companyID) {
+			final String redirectURL, final String companyID,
+			final boolean initCompanies) {
 
 		if (uniqueID == null) {
 
@@ -42,12 +43,15 @@ public class InitializeFacebookLogin {
 
 						FacebookLoginPanel.setPanel(appID, redirectURL);
 
-						if (UniqueIDGlobalVariables.uniqueID != null) {
+						if (initCompanies) {
 
-							ListCompanies.list();
+							if (UniqueIDGlobalVariables.uniqueID != null) {
+
+								ListCompanies.list();
+							}
+
+							GetFirstCompany.get(companyID, redirectURL);
 						}
-
-						GetFirstCompany.get(companyID, redirectURL);
 					}
 				}
 			});

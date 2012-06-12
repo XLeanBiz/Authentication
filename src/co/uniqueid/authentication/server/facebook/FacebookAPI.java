@@ -3,11 +3,11 @@ package co.uniqueid.authentication.server.facebook;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import co.uniqueid.authentication.server.utilities.URLUtilities;
+
+import com.google.appengine.repackaged.org.json.JSONArray;
+import com.google.appengine.repackaged.org.json.JSONException;
+import com.google.appengine.repackaged.org.json.JSONObject;
 
 public class FacebookAPI {
 

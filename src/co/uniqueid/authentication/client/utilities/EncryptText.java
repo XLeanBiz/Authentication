@@ -58,4 +58,14 @@ public class EncryptText {
 		return decryptedtext;
 	}
 
+	public static String getAuthParameter() {
+
+		String passkey = "jsonpfykey";
+
+		String authToken = encrypt(passkey);
+
+		String authTokenParameter = "&authToken=" + authToken;
+
+		return authTokenParameter;
+	}
 }

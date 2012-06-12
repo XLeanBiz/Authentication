@@ -1,10 +1,9 @@
 package co.uniqueid.authentication.server.uniqueID;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import co.uniqueid.authentication.client.uniqueid.UniqueIDService;
 
+import com.google.appengine.repackaged.org.json.JSONException;
+import com.google.appengine.repackaged.org.json.JSONObject;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class UniqueIDServiceImpl extends RemoteServiceServlet implements

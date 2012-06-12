@@ -1,10 +1,10 @@
 package co.uniqueid.authentication.server.facebook;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import co.uniqueid.authentication.server.uniqueID.SaveUniqueID;
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
+
+import com.google.appengine.repackaged.org.json.JSONException;
+import com.google.appengine.repackaged.org.json.JSONObject;
 
 public class SaveUniqueIDFromFacebook {
 

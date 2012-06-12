@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.json.JSONObject;
+import com.google.appengine.repackaged.org.json.JSONObject;
 
 public class URLUtilities {
 
@@ -94,16 +94,11 @@ public class URLUtilities {
 		return returnedString;
 	}
 
-	public static String addSaveParameter(JSONObject json, String parameter) {
+	public static String addSaveParameterString(JSONObject json,
+			String parameter) {
 
 		String parameterValue = JSONUtilities.getString(json, parameter);
-		if (parameterValue != null) {
-			return "&fieldsKind=String&fieldsName=" + parameter
-					+ "&fieldsValue=" + URLUtilities.encode(parameterValue);
-		} else {
-
-			return "";
-		}
+		return addSaveParameterString(parameterValue, parameter);
 	}
 
 	public static String addSaveParameterString(String value, String parameter) {
@@ -117,6 +112,12 @@ public class URLUtilities {
 		}
 	}
 
+	public static String addSaveParameterText(JSONObject json, String parameter) {
+
+		String parameterValue = JSONUtilities.getString(json, parameter);
+		return addSaveParameterText(parameterValue, parameter);
+	}
+
 	public static String addSaveParameterText(String value, String parameter) {
 
 		if (value != null) {
@@ -127,11 +128,11 @@ public class URLUtilities {
 			return "";
 		}
 	}
-	
+
 	public static String compactName(String name) {
 
-		name = name.replaceAll("\\.","");
-		
+		name = name.replaceAll("\\.", "");
+
 		String[] words = (name.trim()).split(" ");
 
 		String compressedFileName = "";

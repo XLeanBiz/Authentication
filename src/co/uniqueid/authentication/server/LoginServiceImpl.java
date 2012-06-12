@@ -19,6 +19,7 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
 		String SECRET_XLeanBiz_facebook = "d869623627c4eada8c1882539fe983e2";
 		String SECRET_UniqueID_facebook = "e1a32038d474da96b354f06793e6f268";
 		String SECRET_CustDevFramework_facebook = "21f0d098071af42da2896512af8b2075";
+		String SECRET_InterviewDatabase_facebook = "5d2cf6c5392fb2161d018bb66fd8a406";
 		
 
 		return FacebookLogin.login(AppID, SECRET_CustDevFramework_facebook, authCode,

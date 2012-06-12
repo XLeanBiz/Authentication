@@ -1,9 +1,9 @@
 package co.uniqueid.authentication.server.facebook;
 
-import org.json.JSONObject;
-
 import co.uniqueid.authentication.server.utilities.JSONUtilities;
 import co.uniqueid.authentication.server.utilities.URLUtilities;
+
+import com.google.appengine.repackaged.org.json.JSONObject;
 
 public class SaveFacebookInfo {
 
@@ -14,26 +14,33 @@ public class SaveFacebookInfo {
 		String unoUserID = JSONUtilities.getString(unoUserJson, "ID");
 		String parameters = "kind=FacebookInfo&ID=" + unoUserID;
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "facebook_id");
-		
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "username");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"facebook_id");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "facebook_email");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"username");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "first_name");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"facebook_email");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "last_name");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"first_name");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "gender");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"last_name");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "birthday");
+		parameters += URLUtilities
+				.addSaveParameterString(unoUserJson, "gender");
 
-		parameters += URLUtilities.addSaveParameter(unoUserJson, "relationship_status");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"birthday");
 
-		//parameters += addParameter(unoUserJson, "city");
+		parameters += URLUtilities.addSaveParameterString(unoUserJson,
+				"relationship_status");
+
+		// parameters += addParameter(unoUserJson, "city");
 
 		URLUtilities.fetchURLPost(saveUnoUserUrl, parameters);
 	}
-
 
 }

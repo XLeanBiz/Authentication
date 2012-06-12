@@ -35,7 +35,7 @@ public class GetCompany {
 
 						UniqueIDGlobalVariables.companyUniqueID = obj;
 
-						new CompanyIcon(obj, redirect_URL + "?company=" + companyID);
+						new CompanyIcon(obj, redirect_URL);
 					}
 				}
 
